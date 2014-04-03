@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.states {
+  fill: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+}
+
+td {
+  padding: 4px 0;
+  font-family: arial;
+  font-size: 12px;
+  border-bottom:1px solid #dedede;
+}
+ 
+table {
+  border-collapse:collapse;
+}
+
+#miss {
+  background-color: pink
+}
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/queue.v1.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script>
+
+var width = 960,
+    height = 500;
+
+var color = d3.scale.threshold()
+    .domain([1, 10, 50, 100, 10000])
+    .range(["#f0f0f0", "#fcc5c0", "#fa9fb5", "#f768a1", "#c51b8a", "#7a0177"]);
+
+var path = d3.geo.path();
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+queue()
+    .defer(d3.json, "us.json")
+    .defer(d3.csv, "unemployment.csv")
+    .await(ready);
+
+function ready(error, us, unemployment) {
+  var rateById = {};
+
+  unemployment.forEach(function(d) { rateById[d.id] = +d.rate; });
+
+  svg.append("g")
+      .attr("class", "counties")
+    .selectAll("path")
+      .data(topojson.feature(us, us.objects.counties).features)
+    .enter().append("path")
+      .attr("d", path)
+      .style("fill", function(d) { return color(rateById[d.id]); });
+
+  svg.append("path")
+      .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a.id !== b.id; }))
+      .attr("class", "states")
+      .attr("d", path);
+}
+
+</script>
+
+<table>
+
+  <thead>
+    <tr>
+      <th class="state-cell">state</th>
+      <th class="count-cell">count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="firstRow">
+      <td class="state-cell">Illinois</td>
+      <td class="count-cell">22051</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Indiana</td>
+      <td class="count-cell">7747</td>
+    </tr>
+    <tr id="miss">
+      <td class="state-cell">Mississippi</td>
+      <td class="count-cell">4296</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Wisconsin</td>
+      <td class="count-cell">1647</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Kentucky</td>
+      <td class="count-cell">1226</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Ohio</td>
+      <td class="count-cell">1121</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Tennessee</td>
+      <td class="count-cell">1090</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Alabama</td>
+      <td class="count-cell">1070</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Arkansas</td>
+      <td class="count-cell">944</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Texas</td>
+      <td class="count-cell">937</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Georgia</td>
+      <td class="count-cell">933</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Michigan</td>
+      <td class="count-cell">679</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Florida</td>
+      <td class="count-cell">673</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Louisiana</td>
+      <td class="count-cell">529</td>
+    </tr>
+    <tr>
+      <td class="state-cell">California</td>
+      <td class="count-cell">526</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Minnesota</td>
+      <td class="count-cell">474</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Iowa</td>
+      <td class="count-cell">397</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Arizona</td>
+      <td class="count-cell">355</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Missouri</td>
+      <td class="count-cell">344</td>
+    </tr>
+    <tr>
+      <td class="state-cell">North Carolina</td>
+      <td class="count-cell">295</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Virginia</td>
+      <td class="count-cell">269</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Oklahoma</td>
+      <td class="count-cell">207</td>
+    </tr>
+    <tr>
+      <td class="state-cell">West Virginia</td>
+      <td class="count-cell">202</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Colorado</td>
+      <td class="count-cell">187</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Pennsylvania</td>
+      <td class="count-cell">181</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Kansas</td>
+      <td class="count-cell">177</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Washington</td>
+      <td class="count-cell">156</td>
+    </tr>
+    <tr>
+      <td class="state-cell">South Carolina</td>
+      <td class="count-cell">152</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Massachusetts</td>
+      <td class="count-cell">108</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Nebraska</td>
+      <td class="count-cell">104</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Nevada</td>
+      <td class="count-cell">103</td>
+    </tr>
+    <tr>
+      <td class="state-cell">New York</td>
+      <td class="count-cell">97</td>
+    </tr>
+    <tr>
+      <td class="state-cell">New Mexico</td>
+      <td class="count-cell">75</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Montana</td>
+      <td class="count-cell">53</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Utah</td>
+      <td class="count-cell">53</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Maryland</td>
+      <td class="count-cell">50</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Connecticut</td>
+      <td class="count-cell">46</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Oregon</td>
+      <td class="count-cell">40</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Idaho</td>
+      <td class="count-cell">39</td>
+    </tr>
+    <tr>
+      <td class="state-cell">South Dakota</td>
+      <td class="count-cell">36</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Alaska</td>
+      <td class="count-cell">33</td>
+    </tr>
+    <tr>
+      <td class="state-cell">North Dakota</td>
+      <td class="count-cell">31</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Wyoming</td>
+      <td class="count-cell">29</td>
+    </tr>
+    <tr>
+      <td class="state-cell">New Jersey</td>
+      <td class="count-cell">21</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Maine</td>
+      <td class="count-cell">18</td>
+    </tr>
+    <tr>
+      <td class="state-cell">New Hampshire</td>
+      <td class="count-cell">14</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Delaware</td>
+      <td class="count-cell">10</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Hawaii</td>
+      <td class="count-cell">8</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Rhode Island</td>
+      <td class="count-cell">5</td>
+    </tr>
+    <tr>
+      <td class="state-cell">Vermont</td>
+      <td class="count-cell">4</td>
+    </tr>
+    <tr class="lastRow">
+      <td class="state-cell">District of Columbia</td>
+      <td class="count-cell">2</td>
+    </tr>
+  </tbody>
+</table>
