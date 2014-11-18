@@ -1,0 +1,502 @@
+e
+<html>
+  <head>
+  <title>Why Gallup Thinks Wyoming's Well-Being Is Worse in 2013</title>
+	<style>
+
+	body {
+	font-family: Georgia;
+	font-size: 16px;
+	line-height: 1.4em;
+}
+
+	.header{
+		background-color: #E6A9EC;
+		color: white;
+		padding: 20px;
+		text-align: center;
+		margin: 0 auto;
+		width: 60%;
+	}
+
+	.text{
+		width: 60%;
+		margin: 0 auto;
+	}
+
+	.chart{
+		width: 60%;
+		margin: 0 auto;
+	}
+
+	#chart_div{
+		width: 60%;
+		margin: 0 auto;
+	}
+
+	.img{
+		width: 60%;
+		margin: 0 auto;
+	}
+
+	.caption{
+		width: 60%;
+		margin: 0 auto;
+		font-size: 10px;
+	}
+
+	</style>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      var holder = [];
+
+	holder.wy = [
+		['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+		['2012',26,2,25,35,14,13,2],
+		['2013',26,13,24,46,40,34,36],
+		]
+
+	holder.al = [
+		['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+		['2012',37,41,41,39,48,45,43],
+		['2013',39,40,42,42,46,47,43],
+		]
+
+	holder.az = [
+		['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+		['2012',34,22,20,20,28,23,9],
+		['2013',42,16,10,19,24,19,15],
+		]
+
+	holder.ar = [
+		['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+		['2012',44,44,47,47,47,46,25],
+		['2013',44,47,41,37,48,45,32],
+		]
+
+	holder.ca = [
+		['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+		['2012',43,30,5,16,15,18,15],
+		['2013',40,26,5,11,12,17,19],
+		]
+
+	holder.co = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',11,5,6,5,1,2,3],
+	['2013',12,14,7,7,4,7,13],
+	]
+
+	holder.ct = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',8,28,10,32,4,16,29],
+	['2013',14,31,9,31,14,31,49],
+	]
+
+	holder.de = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',22,18,29,18,32,26,37],
+	['2013',13,19,38,21,47,28,16],
+	]
+
+	holder.fl = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',42,33,13,41,30,34,33],
+	['2013',36,24,12,29,25,30,35],
+	]
+
+	holder.ga = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',39,32,30,15,27,33,40],
+	['2013',38,18,35,13,30,27,23],
+	]
+
+	holder.ha = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',14,1,2,1,2,1,1],
+	['2013',7,4,2,9,15,8,42],
+	]
+
+	holder.id = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',11,15,14,36,33,22,19],
+	['2013',25,35,16,32,29,29,31],
+	]
+
+	holder.il = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',31,21,34,24,7,28,28],
+	['2013',24,21,32,20,10,22,28],
+	]
+
+	holder.in = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',29,45,49,42,41,42,16],
+	['2013',31,38,44,45,41,40,24],
+	]
+
+	holder.iw = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',3,11,36,27,8,9,4],
+	['2013',3,11,33,22,5,10,11],
+	]
+
+	holder.ks = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',16,14,27,19,11,17,14],
+	['2013',10,9,37,33,11,20,22],
+	]
+
+	holder.ky = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',38,49,50,49,49,49,31],
+	['2013',41,49,49,49,49,49,25],
+	]
+
+	holder.lo = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',48,34,46,25,42,43,36],
+	['2013',48,30,47,35,34,41,21],
+	]
+
+	holder.mn = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',13,35,3,46,34,21,7],
+	['2013',18,33,11,27,27,15,3],
+	]
+
+	holder.my = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',21,17,23,2,13,11,26],
+	['2013',20,36,29,18,17,18,18],
+	]
+
+	holder.ma = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',1,43,16,7,19,10,22],
+	['2013',1,37,13,16,8,13,29],
+	]
+
+	holder.mg = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',27,38,35,29,39,36,35],
+	['2013',16,25,36,43,35,37,44],
+	]
+
+	holder.mi = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',2,3,21,12,3,3,10],
+	['2013',2,7,15,6,2,4,8],
+	]
+
+	holder.ms = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',50,36,40,44,45,48,48],
+	['2013',49,17,43,26,43,48,50],
+	]
+
+	holder.mu = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',30,37,43,43,38,38,17],
+	['2013',32,46,46,41,38,43,41],
+	]
+
+	holder.mt = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',20,9,4,17,26,6,6],
+	['2013',23,6,3,2,16,5,6],
+	]
+
+	holder.nb = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',10,4,39,11,10,7,5],
+	['2013',8,5,21,1,3,3,12],
+	]
+
+	holder.nv = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',47,19,18,48,24,39,32],
+	['2013',47,42,22,34,7,26,5],
+	]
+
+	holder.nh = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',6,24,7,13,20,8,20],
+	['2013',4,12,18,14,22,11,17],
+	]
+
+	holder.nj = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',23,42,19,23,12,32,49],
+	['2013',21,34,26,15,9,23,34],
+	]
+
+	holder.nm = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',40,20,8,8,29,25,44],
+	['2013',45,8,4,23,31,33,48],
+	]
+
+	holder.ny = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',24,40,17,22,22,30,45],
+	['2013',22,43,20,28,23,35,47],
+	]
+
+	holder.nc = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',33,25,31,33,36,35,39],
+	['2013',37,28,30,36,32,32,27],
+	]
+
+	holder.nd = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',19,6,38,26,5,19,11],
+	['2013',29,2,27,4,1,1,1],
+	]
+
+	holder.oh = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',32,46,44,38,43,44,42],
+	['2013',28,44,45,48,42,46,40],
+	]
+
+	holder.oh = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',32,46,44,38,43,44,42],
+	['2013',28,44,45,48,42,46,40],
+	]
+
+	holder.ok = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',41,39,45,40,44,41,8],
+	['2013',43,39,48,47,44,42,7],
+	]
+
+	holder.or = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',25,23,9,28,37,24,21],
+	['2013',27,29,6,24,39,25,30],
+	]
+
+	holder.pn = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',17,31,28,31,23,29,34],
+	['2013',17,41,31,40,33,36,46],
+	]
+
+	holder.ri = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',28,48,15,34,9,37,50],
+	['2013',30,48,23,39,36,39,37],
+	]
+
+	holder.sc = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',35,27,37,30,35,40,46],
+	['2013',33,22,39,38,37,38,33],
+	]
+
+	holder.sd = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',5,7,32,6,6,12,30],
+	['2013',5,3,25,8,13,2,2],
+	]
+    
+    holder.tn = [
+    ['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+    ['2012',36,47,42,45,46,47,41],
+    ['2013',35,45,40,44,45,44,39],
+	]
+
+	holder.tx = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',45,29,33,10,25,27,18],
+	['2013',46,23,34,12,19,21,10],
+	]
+
+	holder.ut = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',7,12,12,3,21,4,12],
+	['2013',9,27,14,5,26,12,20],
+	]
+
+	holder.vt = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',9,13,1,14,16,5,27],
+	['2013',12,20,1,30,6,6,4],
+	]
+
+	holder.vg = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',15,16,22,9,18,14,24],
+	['2013',15,32,28,17,20,24,38],
+	]
+
+	holder.wa = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',18,26,11,21,31,15,13],
+	['2013',19,15,8,10,28,9,9],
+	]
+
+	holder.wv = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',49,50,48,50,50,50,38],
+	['2013',50,50,50,50,50,50,14],
+	]
+
+	holder.wi = [
+	['Year', 'Basic Access', 'Emotional Health', 'Healthy Behaviors', 'Life Evaluation', 'Physical Health', 'Well-Being Overall', 'Work Environment'],
+	['2012',4,10,26,37,17,20,23],
+	['2013',6,10,19,25,18,14,26],
+	];
+
+
+      google.load("visualization", "1", {packages:["corechart"]});
+      //google.setOnLoadCallback(drawChart(holder.wy));
+
+      function drawChart(thing) {
+
+        var data = google.visualization.arrayToDataTable(thing);
+
+        var options = {
+          title: 'Gallup Health Rankings',
+           vAxis: {direction: -1, 
+           viewWindow:{
+                max:51,
+                min:0}},
+           colors:['#f03b20','#feb24c','#ffe733','#31a354','#2c7fb8', '#54278f', '#fa9fb5']
+        };
+ 
+        
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+
+      $( document ).ready(function() {
+      	drawChart(holder.wy)
+	  });
+
+    </script>
+  </head>
+<body>
+
+<div class='header'>
+<h2>Why Gallup Thinks Wyoming's Well-Being Is Worse in 2013</h2>
+<h4>by Sarah Bourassa</h4>
+</div>
+<br>
+<div class="img"><img src="wyoming4.png"></div>
+
+<div class='text'>
+
+<p>Wyoming declined in its overall well-being more than any other state from 2012-2013, according to a recent national survey.</p>
+
+<p>The state dropped 21 rankings (from No. 13 in 2012 to No. 34 in 2013) in the <a href=" http://info.healthways.com/wbi2013 " target="_blank"> Gallup Healthways Well-Being Index</a>.</p>
+
+<p>The survey measures the national well-being based on six factors: basic access, emotional health, healthy behaviors, life evaluation, physical health and work environment.</p>
+
+<p>Wyoming fell the most in work environment (from No. 2 to No. 36). According to Wenlin Liu, principal economist with the <a href="http://eadiv.state.wy.us" target="_blank">Wyoming Economic Analysis Division</a>, Wyoming's economy did weaken in 2013 because of the natural gas decline and low natural gas pricing in 2012. Wyoming has a large concentration of mineral extraction, and 10 percent of Wyoming's employment is in the coal and natural gas industry, he says.</p>
+
+<p>However, the state's economy started turning around in the second half of 2013, due to rebounding natural gas prices and the strength of the construction, financial activities and tourism industries.</p>
+
+<p>"The unemployment rate continues to go down. The job rate growth is slower than the U.S. average but continues improving," Liu says.</p>
+
+<p>He says Wyoming's economy in 2014 so far looks optimistic, with the natural gas price higher than last year and a significant amount oil trading in the state.</p>
+
+<p>In addition to work environment, Wyoming's Gallup physical health score also dropped significantly (from No. 14 in 2012 to No. 40 in 2013). This score focused on Body Mass Index (BMI), disease, sick days, physical pain, daily energy, history of disease and daily health experiences.</p>
+
+<p>Though the <a href="http://www.health.wyo.gov/default.aspx" target="_blank">Wyoming Department of Health</a> has not yet released the 2013 data for BMI and chronic disease, epidemiologist Joseph Grandpre says he hasn't noticed a big upswing in the number of chronic diseases reported in Wyoming in the past year.</p>
+
+<p>"We're facing the same problems as all the states are: obesity, tobacco use. Those are the big things with chronic disease," he says.</p>
+
+<p>From 2011 to 2012, the percentage of adults who were considered obese actually decreased. "I'm hoping that continues," Grandpre says.</p>
+
+<p>Wyoming stayed consistent in the Gallup survey in healthy behaviors (lifestyle habits) and basic access (food, shelter, healthcare and a safe and satisfying place to live). It only slightly decreased in rankings for life evaluation (combines evaluation of present life with anticipated situation in five years) and emotional health (daily experiences and feelings).</p>
+
+<p>Wyoming's average ranking since the survey began in 2008 is 14 (it actually ranked No. 2 in 2010). The state's overall wellness score, 65.6, was slightly less than the national average of 66.2.</p>
+
+<p>Gallup surveyed more than 178,000 people between last January and December to create the index. In Wyoming, 558 people took part out of a <a href="http://quickfacts.census.gov/qfd/states/56000.html" target="_blank">population of about 582,000</a>.
+
+</div>
+
+<div class='chart'>
+
+<h3>How did your state's well-being change from 2012 to 2013?</h3>
+
+ <select name="item_options" id="selectboxsize">
+    <option id="wy">Wyoming</option>
+    <option id="al">Alabama</option>
+    <option id="ak">Alaska</option>
+    <option id="az">Arizona</option>
+    <option id="ar">Arkansas</option>
+    <option id="ca">California</option>
+    <option id="co">Colorado</option>
+    <option id="ct">Conneticut</option>
+    <option id="de">Delaware</option>
+    <option id="fl">Florida</option>
+    <option id="ga">Georgia</option>
+    <option id="ha">Hawaii</option>
+    <option id="id">Idaho</option>
+    <option id="il">Illinois</option>
+    <option id="in">Indiana</option>
+ 	<option id="iw">Iowa</option>
+ 	<option id="ks">Kansas</option>
+ 	<option id="ky">Kentucky</option>
+ 	<option id="lo">Louisiana</option>
+ 	<option id="mn">Maine</option>
+ 	<option id="my">Maryland</option>
+ 	<option id="ma">Massachusetts</option>
+ 	<option id="my">Maryland</option>
+ 	<option id="mg">Michigan</option>
+ 	<option id="mi">Minnesota</option>
+ 	<option id="ms">Mississippi</option>
+ 	<option id="mu">Missouri</option>
+ 	<option id="mt">Montana</option>
+ 	<option id="nb">Nebraska</option>
+ 	<option id="nv">Nevada</option>
+ 	<option id="nh">New Hampshire</option>
+ 	<option id="nj">New Jersey</option>
+ 	<option id="nm">New Mexico</option>
+    <option id="ny">New York</option>
+    <option id="nc">North Carolina</option>
+    <option id="nd">North Dakota</option>
+    <option id="oh">Ohio</option>
+    <option id="ok">Oklahoma</option>
+    <option id="or">Oregon</option>
+    <option id="pn">Pennsylvania</option>
+    <option id="ri">Rhode Island</option>
+    <option id="sc">South Carolina</option>
+    <option id="sd">South Dakota</option>
+    <option id="tn">Tennessee</option>
+    <option id="tx">Texas</option>
+    <option id="ut">Utah</option>
+    <option id="vt">Vermont</option>
+    <option id="vg">Virginia</option>
+    <option id="wa">Washington</option>
+    <option id="wv">West Virginia</option>
+    <option id="wi">Wisconsin</option>
+
+</select>
+<input type="hidden" name="item_options_name" value="Universal" id="getchangevalue" />
+</div>
+
+<div id="myDiv"></div>
+
+<div id="chart_div" style="width: 900px; height: 500px;"></div>
+
+
+<script type="text/javascript">
+
+$('#selectboxsize').change(function() {
+
+    var id = $(this).find(':selected')[0].id;
+    drawChart(holder[id])
+});
+
+</script>
+
+  </body>
+</html>
